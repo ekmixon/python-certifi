@@ -20,10 +20,8 @@ except ImportError:
 version_regex = r'__version__ = ["\']([^"\']*)["\']'
 with open('certifi/__init__.py', 'r') as f:
     text = f.read()
-    match = re.search(version_regex, text)
-
-    if match:
-        VERSION = match.group(1)
+    if match := re.search(version_regex, text):
+        VERSION = match[1]
     else:
         raise RuntimeError("No version number found!")
 
